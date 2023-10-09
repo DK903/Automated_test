@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="UTF-8">
+	<title>多表单切换</title>
+	<style type="text/css">
+		span {
+			display: none
+		}
+
+		.ball {
+			border: 1px solid #e54724;
+		}
+
+		#scrollup {
+			background: #777;
+			color: #eee;
+			font-size: 40px;
+			text-align: center;
+			text-decoration: none;
+			bottom: 65px;
+			right: 20px;
+			overflow: hidden;
+			width: 46px;
+			height: 46px;
+			border: none;
+			opacity: .8;
+		}
+
+		.wrapper.box {
+			padding-top:100px;
+		}
+	</style>
+	<script type="text/javascript">
+		function al() {
+			alert('我被点击啦！')
+			//var ret = confirm('确定要删除吗？');
+			//alert(ret)
+		}
+	</script>
+	<link href="css/style.css" rel="stylesheet" type='text/css' media="all" />
+</head>
+
+<body>
+
+	<div class="wrapper clearfix box">
+		<div class="left">
+			<iframe src="./html/注册.html" frameborder="1" name="myframe1" id="idframe1" class="cframe"
+			scrolling="no"></iframe>
+		</div>
+		<div class="right">
+			
+			<iframe src="./html/登录.html" frameborder="1" name="myframe2" id="idframe2" class="cframe"
+				scrolling="no"></iframe>
+		</div>
+		<a id="scrollup" href="#top" style="position:fixed;z-index: 999;display: none;">^</a>
+	</div>
+</body>
+
+<script type="text/javascript">
+	//操作滚动条显示返回顶部按钮
+	window.onscroll = function () {
+		//变量t是滚动条滚动时，距离顶部的距离
+		var t = document.documentElement.scrollTop || document.body.scrollTop;
+		var scrollup = document.getElementById('scrollup');
+		//当滚动到距离顶部200px时，返回顶部的锚点显示
+		if (t > 100) {
+			scrollup.style.display = "block";
+		} else {          //恢复正常
+			scrollup.style.display = "none";
+		}
+	}
+
+	//延时加载的元素
+	setTimeout("changeState()", 5000);
+	function changeState() {
+		document.getElementById("waitA").style.display = "none"
+		var para = document.createElement("input")
+		para.setAttribute("type", "text")
+		para.setAttribute("name", "userA")
+		para.setAttribute("id", "userA")
+		para.setAttribute("placeholder", "延时加载的输入框")
+		var element = document.getElementById("wait")
+		element.appendChild(para)
+	}
+</script>
+
+</html>
