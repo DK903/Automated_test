@@ -3,7 +3,7 @@ from time import sleep
 driver = webdriver.Chrome()
 driver.get("https://www.baidu.com")
 driver.maximize_window()
-# 获取所有网站的Cookie
+# 获取当前页面所有的Cookie信息
 cookie1 = driver.get_cookies()
 # 添加cookie
 driver.add_cookie({'name': 'testname', 'value': '123456'})
